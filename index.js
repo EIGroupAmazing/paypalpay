@@ -6,6 +6,10 @@ var app = express();
 var cool = require('cool-ascii-faces');
 var paypal = require('paypal-rest-sdk');
 var fs = require('fs');
+var ipn = require('paypal-ipn');
+
+
+
 
 var options = {
     key: fs.readFileSync('key.pem', 'utf8'),
@@ -63,7 +67,15 @@ app.get('/form', function(request, response) {
 });
 
 app.get('/success', function(req, rep) {
-    rep.send("order success submit");
+    ipn.verify(params, {'allow_sandbox': true}, function callback(err, mes) {
+      //The library will attempt to verify test payments instead of blocking them
+      if (err) {
+        rep.send(err);
+      } else {
+        rep.send(mes);  
+      };
+    });
+    // rep.send("order success submit");
 });
 
 app.post('/success', function(req, rep) {
