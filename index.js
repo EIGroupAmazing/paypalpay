@@ -72,7 +72,7 @@ app.get('/success', function(req, rep) {
       if (err) {
         rep.send(err);
       } else {
-        rep.send(mes);  
+        rep.send("HEALTHY"+mes);  
       };
     });
     // rep.send("order success submit");
