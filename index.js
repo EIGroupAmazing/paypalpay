@@ -70,9 +70,9 @@ app.get('/success', function(req, rep) {
     ipn.verify(params, {'allow_sandbox': true}, function callback(err, mes) {
       //The library will attempt to verify test payments instead of blocking them
       if (err) {
-        rep.send(err);
+        rep.send("unhealthy");
       } else {
-        rep.send("HEALTHY"+mes);  
+        rep.send("HEALTHY");  
       };
     });
     // rep.send("order success submit");
