@@ -67,7 +67,12 @@ app.get('/form', function(request, response) {
 });
 
 app.get('/success', function(req, rep) {
-    ipn.verify(params, {'allow_sandbox': true}, function callback(err, mes) {
+    // rep.send("order success submit");
+});
+
+app.post('/success', function(req, rep) {
+    // paypal post to me?!
+    ipn.verify(req.body, {'allow_sandbox': true}, function callback(err, mes) {
       //The library will attempt to verify test payments instead of blocking them
       if (err) {
         rep.send("unhealthy");
@@ -75,12 +80,7 @@ app.get('/success', function(req, rep) {
         rep.send("HEALTHY");  
       };
     });
-    // rep.send("order success submit");
-});
-
-app.post('/success', function(req, rep) {
-    // paypal post to me?!
-    rep.send(req.body);
+    // rep.send(req.body);
 });
 
 Test_data = {};
