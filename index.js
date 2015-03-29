@@ -7,8 +7,11 @@ var cool = require('cool-ascii-faces');
 var paypal = require('paypal-rest-sdk');
 var fs = require('fs');
 var ipn = require('paypal-ipn');
+var request = require("request");
+var requestify = require("requestify");
 
 var qs = require('querystring');
+
 
 
 var options = {
@@ -63,8 +66,14 @@ app.get('/', function(request, response) {
     response.send(result);
 });
 
+
+
 app.get('/form', function(request, response) {
-    response.render('orderForm.html');
+    requestify.get('http://eizuiqiang.pagekite.me/COS/payment-ok?status=success')
+    .then(function(response) {
+      // Get the response body (JSON parsed or jQuery object for XMLs)
+      console.log(response.getBody());
+    });
 });
 
 app.get('/payments', function(request, response)
@@ -102,8 +111,12 @@ app.post('/process', function(req, rep) {
       if (err) {
         rep.send("unhealthy");
       } else {
-        rep.send("HEALTHY");  
         console.log("success")
+        requestify.get('http://eizuiqiang.pagekite.me/COS/payment-ok?status=success')
+        .then(function(response) {
+          // Get the response body (JSON parsed or jQuery object for XMLs)
+          console.log(response.getBody());
+        });
       };
     });
     //rp.send(Test_data);
