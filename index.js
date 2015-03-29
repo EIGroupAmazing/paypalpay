@@ -104,8 +104,14 @@ app.post('/success', function(req, rep) {
 Test_data = {};
 app.post('/process', function(req, rp) {
     console.log('start')
-    console.log(req.body)
-    console.log('end')
+    ipn.verify(req.body, {'allow_sandbox': true}, function callback(err, mes) {
+      //The library will attempt to verify test payments instead of blocking them
+      if (err) {
+        rep.send("unhealthy");
+      } else {
+        rep.send("HEALTHY");  
+      };
+    });
     //rp.send(Test_data);
 });
 
