@@ -90,12 +90,6 @@ app.get('/success', function(req, rep) {
 
 app.post('/success', function(req, rep) {
     // paypal post to me?!
-    rep.send("Payment success, your order will be sent to you in XXX");
-    // rep.send(req.body);
-});
-
-Test_data = {};
-app.post('/process', function(req, rp) {
     ipn.verify(req.body, {'allow_sandbox': true}, function callback(err, mes) {
       //The library will attempt to verify test payments instead of blocking them
       if (err) {
@@ -104,6 +98,14 @@ app.post('/process', function(req, rp) {
         rep.send("HEALTHY");  
       };
     });
+    // rep.send(req.body);
+});
+
+Test_data = {};
+app.post('/process', function(req, rp) {
+    console.log('start')
+    console.log(req.body)
+    console.log('end')
     //rp.send(Test_data);
 });
 
