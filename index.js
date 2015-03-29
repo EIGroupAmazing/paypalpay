@@ -66,7 +66,7 @@ app.get('/', function(request, response) {
 app.get('/form', function(request, response) {
     response.render('orderForm.html');
 });
-
+/*
 app.post('/payment-receive', function(request, response)
 {
     var cmd = "_xclick";
@@ -82,7 +82,7 @@ app.post('/payment-receive', function(request, response)
 
     response.render('index', {cmd = cmd});
 });
-
+*/
 app.get('/success', function(req, rep) {
     // rep.send("order success submit");
 });
