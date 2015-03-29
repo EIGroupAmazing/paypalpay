@@ -90,19 +90,12 @@ app.get('/success', function(req, rep) {
 
 app.post('/success', function(req, rep) {
     // paypal post to me?!
-    ipn.verify(req.body, {'allow_sandbox': true}, function callback(err, mes) {
-      //The library will attempt to verify test payments instead of blocking them
-      if (err) {
-        rep.send("unhealthy");
-      } else {
-        rep.send("HEALTHY");  
-      };
-    });
+    rep.send("thank you for using foodbear")
     // rep.send(req.body);
 });
 
 Test_data = {};
-app.post('/process', function(req, rp) {
+app.post('/process', function(req, rep) {
     console.log('start')
     ipn.verify(req.body, {'allow_sandbox': true}, function callback(err, mes) {
       //The library will attempt to verify test payments instead of blocking them
@@ -110,6 +103,7 @@ app.post('/process', function(req, rp) {
         rep.send("unhealthy");
       } else {
         rep.send("HEALTHY");  
+        console.log("success")
       };
     });
     //rp.send(Test_data);
