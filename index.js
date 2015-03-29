@@ -67,8 +67,8 @@ app.get('/form', function(request, response) {
     response.render('orderForm.html');
 });
 
-app.post('/payment-receive', function(request, response)
-{
+app.post('/payment', function(request, response)
+{    
     var cmd = "_xclick";
     /*
     var business = "last.scythe-facilitator@gmail.com";
@@ -80,8 +80,7 @@ app.post('/payment-receive', function(request, response)
     var currency_code = "USD";
     var state = "SG";
     */
-
-    response.render('index', {cmd = cmd});
+    response.render('index', {'cmd': cmd });
 });
 
 app.get('/success', function(req, rep) {
