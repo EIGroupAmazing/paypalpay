@@ -19,6 +19,7 @@ var options = {
 app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'html');
 app.set('views', __dirname + '/views');
+app.set('view engine', 'jade');
 app.use(bodyParser());
 
 paypal.configure({
@@ -66,6 +67,22 @@ app.get('/form', function(request, response) {
     response.render('orderForm.html');
 });
 
+app.post('/payment-receive', function(request, response)
+{
+    var cmd = "_xclick";
+    var business = "last.scythe-facilitator@gmail.com";
+    var undefined_quantity = 1;
+    var item_name = "FoodLion " + req.body.item_name;
+    var amount = req.body.amount;
+    var shipping = 0.00;
+    var shipping2 = 0.00;
+    var currency_code = "USD";
+    var state = "SG";
+
+
+    response.render('index', {cmd = cmd});
+});
+
 app.get('/success', function(req, rep) {
     // rep.send("order success submit");
 });
@@ -93,8 +110,8 @@ app.get('/seehow', function(res, rep) {
     rep.send(Test_data);
 });
 
+// obsolete
 app.post('/submit', function(req, rp) {
-
     var credit_card_data = {
         type: req.body.type,
         number: req.body.number,
@@ -104,7 +121,6 @@ app.post('/submit', function(req, rp) {
         first_name: req.body.first_name,
         last_name: req.body.last_name
     };
-
     paypal.creditCard.create(credit_card_data, function(error, credit_card) {
         if (error) {
             console.log(error);
@@ -113,10 +129,8 @@ app.post('/submit', function(req, rp) {
             // console.log("create credit-card response");
             // console.log(credit_card);
             CreditCard_data = credit_card;
-
         }
     })
-
 })
 
 app.get('/card', function(r, rp) {
@@ -126,6 +140,8 @@ app.get('/card', function(r, rp) {
 app.listen(app.get('port'), function() {
     console.log("Node app is running at localhost:" + app.get('port'));
 });
+
+
 
 httpsServer = https.createServer(options, app);
 httpsServer.listen(9000);

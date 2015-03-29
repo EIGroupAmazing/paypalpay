@@ -4,27 +4,27 @@
 </head>
 <body>
 <form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">
-	<br><INPUT TYPE="Text" NAME="cmd" VALUE="_xclick">
+	<br><INPUT TYPE="hidden" NAME="cmd" VALUE="_xclick">
 	<!-- Business Owner Name Here -->
 	<br><INPUT TYPE="hidden" NAME="business" VALUE="last.scythe-facilitator@gmail.com">
-	<br><INPUT TYPE="Text" NAME="undefined_quantity" VALUE="1">
+	<br><INPUT TYPE="hidden" disabled="disabled" NAME="undefined_quantity" VALUE="1">
 	<br><INPUT TYPE="Text" NAME="item_name" VALUE="hat">
-	<br><INPUT TYPE="Text" NAME="item_number" VALUE="123">
+	<br><INPUT TYPE="hidden" NAME="item_number" VALUE="123">
 	<br><INPUT TYPE="Text" NAME="amount" VALUE="15.00">
-	<br><INPUT TYPE="Text" NAME="shipping" VALUE="1.00">
-	<br><INPUT TYPE="Text" NAME="shipping2" VALUE="0.50">
+	<br><INPUT TYPE="hidden" NAME="shipping" VALUE="0.00">
+	<br><INPUT TYPE="hidden" NAME="shipping2" VALUE="0.00">
 	<br><INPUT TYPE="Text" NAME="currency_code" VALUE="USD">
 	<br><INPUT TYPE="Text" NAME="first_name" VALUE="John">
 	<br><INPUT TYPE="Text" NAME="last_name" VALUE="Doe">
 	<br><INPUT TYPE="Text" NAME="address1" VALUE="9 Elm Street">
 	<br><INPUT TYPE="Text" NAME="address2" VALUE="Apt 5">
-	<br><INPUT TYPE="Text" NAME="city" VALUE="Berwyn">
-	<br><INPUT TYPE="Text" NAME="state" VALUE="PA">
+	<br><INPUT TYPE="Text" NAME="city" VALUE="Singapore">
+	<br><INPUT TYPE="hidden" NAME="state" VALUE="PA">
 	<br><INPUT TYPE="Text" NAME="zip" VALUE="19312">
 	<br><INPUT TYPE="Text" NAME="lc" VALUE="SG">
 	<br><INPUT TYPE="Text" NAME="email" VALUE="buyer@domain.com">
-	<br><INPUT TYPE="Text" NAME="night_phone_a" VALUE="610">
-	<br><INPUT TYPE="Text" NAME="night_phone_b" VALUE="555">
+	<br><INPUT TYPE="hidden" NAME="night_phone_a" VALUE="610">
+	<br><INPUT TYPE="hidden" NAME="night_phone_b" VALUE="555">
 	<INPUT TYPE="image" NAME="submit" BORDER="0" SRC="http://www.paypal.com/en_GB/i/btn/btn_buynow_LG.gif" ALT="PayPal - The safer, easier way to pay online">
 	<img alt="" border="" width="1" height="1" src="https://www.paypal.com/en_GB/i/scr/pixel.gif">
 	<input TYPE="hidden" name="return" value="https://ezname.herokuapp.com/success">
