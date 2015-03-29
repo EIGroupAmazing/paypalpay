@@ -80,8 +80,8 @@ app.get('/payments', function(request, response)
     var currency_code = "USD";
     var state = "SG";
     */
-    console.log(request.body.item)
-    response.render('index', {'item': request.body.item, 'amount': request.body.amount });
+    console.log(request.query.item)
+    response.render('index', {'item': request.query.item, 'amount': request.query.amount });
 });
 
 app.get('/success', function(req, rep) {
