@@ -17,7 +17,7 @@ var options = {
 };
 
 app.engine('html', require('ejs').renderFile);
-app.set('view engine', 'html');
+// app.set('view engine', 'html');
 app.set('views', __dirname + '/views');
 app.set('view engine', 'jade');
 app.use(bodyParser());
@@ -67,7 +67,7 @@ app.get('/form', function(request, response) {
     response.render('orderForm.html');
 });
 
-app.post('/payment', function(request, response)
+app.get('/payments', function(request, response)
 {    
     var cmd = "_xclick";
     /*
@@ -80,7 +80,7 @@ app.post('/payment', function(request, response)
     var currency_code = "USD";
     var state = "SG";
     */
-    response.render('index', {'cmd': cmd });
+    response.render('index', {'item': request.body.item, 'amount': request.body.amount });
 });
 
 app.get('/success', function(req, rep) {

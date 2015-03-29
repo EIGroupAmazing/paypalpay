@@ -1,5 +1,63 @@
 extends layout
 
 block content
-    h1 test
-    #{cmd}
+	h1 FoodBear inc
+	br
+	form(action='https://www.sandbox.paypal.com/cgi-bin/webscr',method='post')
+		
+		INPUT(TYPE="hidden", NAME="cmd", VALUE='_xclick')
+		
+		INPUT(TYPE="hidden", NAME="business", VALUE="last.scythe-facilitator@gmail.com")
+		
+		INPUT(TYPE="hidden", disabled,NAME="undefined_quantity" VALUE="1" )
+		
+		INPUT(TYPE="hidden", NAME="item_number" ,VALUE="123")
+		
+		h3 Payment form
+		span Items
+		INPUT(TYPE="Text", disabled ,NAME="item_name", VALUE="#{item}")
+		br
+		span Amount
+		INPUT( TYPE="Text" disabled NAME="amount" VALUE="#{amount}")
+		br
+		input(TYPE="hidden" NAME="shipping" VALUE="0.00")
+		br
+		input(INPUT TYPE="hidden" NAME="shipping2" VALUE="0.00")
+		br
+		input(TYPE="hidden" NAME="currency_code" VALUE="USD")
+		br
+		input(TYPE="hidden" NAME="state" VALUE="PA")
+		br		
+		span FirstName
+		input(TYPE="Text" NAME="first_name" VALUE="John")
+		br
+		span LastName
+		input(TYPE="Text" NAME="last_name" VALUE="Doe")
+		br
+		span Address1
+		input(TYPE="Text" NAME="address1" VALUE="9 Elm Street")
+		br
+		span Address2
+		input(TYPE="Text" NAME="address2" VALUE="Apt 5")
+		br
+		span zip
+		input(TYPE="Text" NAME="zip" VALUE="19312")
+		br
+		span City
+		input(TYPE="Text" disabled NAME="city" VALUE="Singapore")
+		br			
+		span Country Code
+		input(TYPE="Text" disabled NAME="lc" VALUE="SG")
+		br
+		input(TYPE="hidden" NAME="email" VALUE="buyer@domain.com")
+		br
+		input(TYPE="hidden" NAME="night_phone_a" VALUE="610")
+		br
+		input(TYPE="hidden" NAME="night_phone_b" VALUE="555")
+		input(TYPE="image" NAME="submit" BORDER="0" SRC="http://www.paypal.com/en_GB/i/btn/btn_buynow_LG.gif" ALT="PayPal - The safer, easier way to pay online")
+		br
+		img(alt="" border="" width="1" height="1" src="https://www.paypal.com/en_GB/i/scr/pixel.gif")
+		br
+		input(TYPE="hidden" name="return" value="https://ezname.herokuapp.com/success")
+		br
+		input(type="hidden" name="notify_url" value="https://ezname.herokuapp.com/process")
