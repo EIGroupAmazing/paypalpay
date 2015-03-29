@@ -66,10 +66,11 @@ app.get('/', function(request, response) {
 app.get('/form', function(request, response) {
     response.render('orderForm.html');
 });
-/*
+
 app.post('/payment-receive', function(request, response)
 {
     var cmd = "_xclick";
+    /*
     var business = "last.scythe-facilitator@gmail.com";
     var undefined_quantity = 1;
     var item_name = "FoodLion " + req.body.item_name;
@@ -78,11 +79,11 @@ app.post('/payment-receive', function(request, response)
     var shipping2 = 0.00;
     var currency_code = "USD";
     var state = "SG";
-
+    */
 
     response.render('index', {cmd = cmd});
 });
-*/
+
 app.get('/success', function(req, rep) {
     // rep.send("order success submit");
 });
