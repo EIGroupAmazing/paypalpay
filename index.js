@@ -8,7 +8,7 @@ var paypal = require('paypal-rest-sdk');
 var fs = require('fs');
 var ipn = require('paypal-ipn');
 
-
+var qs = require('querystring');
 
 
 var options = {
@@ -103,8 +103,10 @@ app.post('/success', function(req, rep) {
 
 Test_data = {};
 app.post('/process', function(req, rp) {
-    Test_data = req.body;
-    rp.send(Test_data);
+    console.log('start')
+    console.log(req.body)
+    console.log('end')
+    //rp.send(Test_data);
 });
 
 app.get('/seehow', function(res, rep) {

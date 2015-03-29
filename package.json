@@ -16,7 +16,8 @@
     "https": "^1.0.0",
     "jade": "^1.9.2",
     "paypal-ipn": "^3.0.0",
-    "paypal-rest-sdk": "^1.5.2"
+    "paypal-rest-sdk": "^1.5.2",
+    "querystring": "^0.2.0"
   },
   "engines": {
     "node": "0.10.x"
